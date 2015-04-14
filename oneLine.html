@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ro">
+    <head>
+        <title>JDL - Home Page</title>
+        
+        <script src="./js/pace.min.js"></script>
+        <link href="./css/pace/minimal.css" rel="stylesheet" />
+        
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		
+        <meta name="author" content="Marius Ilie">
+        <meta name="description" content="">
+        
+        <!-- BOOTSTRAP FRAMEWORK -->
+        <link href="./css/bootstrap.min.css" rel="stylesheet">
+        <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
+        
+        <!-- SKELETON FRAMEWORK -->
+        <link rel="stylesheet" href="./css/normalize.css">
+        <link rel="stylesheet" href="./css/skeleton.css">
+        
+        <!-- CUSTOM CSS -->
+        <link rel="stylesheet" href="./css/style.css">
+    </head>
+    <body>
+        <div id="menu" class="navbar-fixed-top dark">
+			<div class="container">
+				<nav role="navigation" class="navbar navbar-default">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar top-bar"></span>
+							<span class="icon-bar middle-bar"></span>
+							<span class="icon-bar bottom-bar"></span>
+						</button>
+						<a href="#" class="navbar-brand">JDL</a>
+					</div>
+					
+					<div id="navbarCollapse" class="collapse navbar-collapse">
+						<ul class="nav navbar-nav">
+							<li class="active"><a href="#home">Home <span class="sr-only">(current)</span></a></li>
+							<li><a href="#proiecte">Proiecte</a></li>
+							<li><a href="#mentori">Mentori</a></li>
+							<li><a href="#contact">Contact</a></li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="#">Inscrie-te</a></li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
+        <section id="header">
+            <div class="bgImg">
+                <div class="img" style="background-image: url('http://i.ytimg.com/vi/nq0_zGzSc8g/maxresdefault.jpg'); background-position: top center;"></div>
+            </div>
+            <div class="container logoRelative">
+            	<div class="pageTitle">
+		            <div class="logoContainer">
+		            	<div class="logo"></div>
+		            </div>
+		            <div class="titleContainer">
+		            	<div class="title">
+		            		<!-- pentru 2 linii: .titleContainer .twoLines -->
+		            		<!-- pentru spatii: <span style="color: transparent">_</span> -->
+		            		Talks
+		            	</div>
+		            </div>
+		        </div>
+	        </div>
+        </section>
+        <section id="content">
+            <div class="article">
+                <div class="title">
+                    P1 – NEW PROJECT 02.25.2015
+                </div>
+                <div class="video">
+                    
+                </div>
+                <div class="read">
+                    <a cass="left">
+                        READ MORE
+                    </a>
+                    <a class="right">
+                        JOIN
+                    </a>
+                    <div class="clr"></div>
+                </div>
+            </div>
+            <div class="article">
+                <div class="title">
+                    P1 – NEW PROJECT 02.25.2015
+                </div>
+                <div class="video">
+                    
+                </div>
+                <div class="read">
+                    <a cass="left">
+                        READ MORE
+                    </a>
+                    <a class="right">
+                        JOIN
+                    </a>
+                    <div class="clr"></div>
+                </div>
+            </div>
+
+            <section id="navigate">
+                <div class="back">
+                    <span class="glyphicon glyphicon-menu-left" aria-hidden="flase"></span>
+                </div>
+                <div class="next">
+                    <span class="glyphicon glyphicon-menu-right" aria-hidden="flase"></span>
+                </div>
+            </section>
+            
+            <section id="footer">
+                Copyright &copy; 2015. JDL.
+            </section>
+        </section>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="http://zeptojs.com/zepto.min.js"></script>
+        <script src="./js/bootstrap.min.js"></script>
+        <script>
+            Pace.on('done', function() {
+				//done
+            });
+			
+			$(document).ready(function(){
+				if($(window).width() > 768)
+				{
+					setTimeout(function(){
+						$('#header .container.logoRelative').addClass('active');
+						setTimeout(function(){
+							$('#header .container.logoRelative').addClass('active2');
+							var pageTitle = $('#header .container.logoRelative .pageTitle');
+							var titleSize = $('#header .container.logoRelative .title');
+							var logoContainer = $('#header .container.logoRelative .logoContainer');
+							var titleContainer = $('#header .container.logoRelative .titleContainer');
+
+							var pageTitleSize = pageTitle.width()+titleSize.width()+40-logoContainer.css('margin-left').replace("px", "");
+
+							pageTitle.css('width', pageTitleSize);
+							titleContainer.css('width', titleSize.width()+40);
+							pageTitle.css('margin-left', -pageTitle.width()/2);
+						}, 500);
+					}, 1500);
+				}
+
+				$('#menu').css('max-width', $(window).width());
+				
+				$('body #menu .navbar-toggle').click(function(){
+					$('body #menu').toggleClass('active');
+				});
+				
+				$('body #menu li a').click(function(e){
+					e.preventDefault();
+					var timeOut = 200;
+					if($(window).width() <= 768)
+					{
+						$('body #menu .navbar-toggle').click();
+						timeOut = 400;
+					}
+					var objThis = $(this);
+					console.log($(objThis.attr('href')).css('left'));
+					if($(window).width() <= 768 && objThis.attr('href')!='#home')
+						$('body #menu .navbar-brand').addClass('hide');
+					else $('body #menu .navbar-brand').removeClass('hide');
+					setTimeout(function()
+					{
+						$('#menu').css('left', $(objThis.attr('href')).css('left'));
+						$('html,body').animate({
+							scrollTop: 0,
+							scrollLeft: $(objThis.attr('href')).css('left')
+						}, 500, function(){
+							$('html,body').clearQueue();
+						});
+					}, timeOut);
+				});
+			});
+        </script>
+    </body>
+</html>
